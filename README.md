@@ -43,7 +43,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -63,7 +63,16 @@ jobs:
           CR_TOKEN: "${{ secrets.CR_TOKEN }}"
 ```
 
-## II. Deployment of a chart
+## II. Verifications
+- On the repository, very multiple things
+  - Click in `Actions` and verify the pipelines has been executed and are green
+  - Switch to `gh-pages` and verify a `index.yaml` file has been created
+  - Look at **Releases** section and verify it contains a release of your chart
+  - Look at **Deployments** section and verify it contains a deployment of your chart
+  - Verify the URL `https://<user>.github.io/helm_charts/` is pointing to a github page exposing the readme
+  - Verify the URL `https://<user>.github.io/helm_charts/index.yaml` is exposing the release's metadata
+
+## III. Deployment of a chart
 ### 1. Configure and deploy a Kubernetes cluster
 You can for example deploy a small cluster with **Civo**
 > See: https://github.com/veben/civo_k8s_easy_cluster/blob/main/readme.md
@@ -74,13 +83,17 @@ You can for example deploy a small cluster with **Civo**
 ### 3. Deploy helm chart
 - Add the repository:
 ```sh
-helm repo add helm-charts https://veben.github.io/helm_charts/
+helm repo add helm_charts https://veben.github.io/helm_charts/
 ```
 - Perform an helm update to fetch latest
 ```sh
 helm repo update
 ```
-- Search the repository
+- Search the charts contained in the repository
 ```sh
 helm search repo helm_charts
+```
+- Install the chart on your cluster
+```sh
+helm upgrade --install helm_charts/mario-bros
 ```
