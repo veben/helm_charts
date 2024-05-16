@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  mario-bros:
+  - apiVersion: v2
+    appVersion: 0.4.0
+    created: "2024-05-16T14:41:27.776477497Z"
+    description: A Helm chart for Mario Bros
+    digest: 9109dd5b0fbc4ecaf661995cb1029a6d3a65a55b6a6baaac5532e83355b60fec
+    name: mario-bros
+    type: application
+    urls:
+    - https://github.com/veben/helm_charts/releases/download/mario-bros-0.4.0/mario-bros-0.4.0.tgz
+    version: 0.4.0
+generated: "2024-05-16T14:41:27.776486484Z"
