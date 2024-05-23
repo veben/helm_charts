@@ -95,5 +95,5 @@ helm search repo helm_charts
 ```
 - Install the chart on your cluster
 ```sh
-helm upgrade --install helm_charts/mario-bros
+helm upgrade --install mario-bros helm_charts/mario-bros
 ```
