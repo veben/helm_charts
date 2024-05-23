@@ -80,7 +80,7 @@ You can for example deploy a small cluster with **Civo**
 ### 2. Install **Helm**
 > See: https://helm.sh/docs/intro/install/
 
-### 3. Deploy helm chart
+### 3. Deploy Mario Bros helm chart
 - Add the repository:
 ```sh
 helm repo add helm_charts https://veben.github.io/helm_charts/
