@@ -14,20 +14,20 @@ git push --set-upstream origin gh-pages
 - Choose `Deploy from a branch` and choose `gh-pages`
 
 ### 2. Create a personal token
-- Click on your Github avatar
+- Click on your GitHub avatar
 - Go to `Settings > Developer settings > Personal access tokens > Tokens (classic)`
-- Create a new classic token with `repo` and `write:packages`
+- Create a new classic token with `repo` and `write:packages` permissions
 
 ### 3. Define CI token
 - Go to the repository's settings
 - Open `Secrets and variables > Acions`
-- Create a new **repository secret** named `CR_TOKEN` with your personal token as value
+- Create a new **repository secret** named `CR_TOKEN` with your personal token as the value
 
 ### 4. Create a helm chart
 Define in helm chart in the `charts` folder
 
 ### 5. Create the CI
-Create a GitHub Actions Workflow `.github/workflows/release.yml` in the main branch and add the following configuration. This will now turn our repo to self-hosted Helm Chart repo. With every push to the main branch it will check the chart and if there is a new chart version creates a corresponding GitHub release, adds Helm chart artefacts to the release and creates a deployment which will be then hosted on GitHub Pages.
+Create a GitHub Actions Workflow .github/workflows/release.yml in the main branch and add the following configuration. This will turn your repository into a self-hosted Helm Chart repository. With every push to the main branch, it will check the chart, and if there is a new chart version, it will create a corresponding GitHub release, add Helm chart artifacts to the release, and create a deployment that will be hosted on GitHub Pages.
 ```
 name: Release Charts
 
@@ -64,13 +64,13 @@ jobs:
 ```
 
 ## II. Verifications
-- On the repository, very multiple things
+- On the repository, verify multiple things
   - Click in `Actions` and verify the pipelines has been executed and are green
   - Switch to `gh-pages` and verify a `index.yaml` file has been created
-  - Look at **Releases** section and verify it contains a release of your chart
-  - Look at **Deployments** section and verify it contains a deployment of your chart
-  - Verify the URL `https://<user>.github.io/helm_charts/` is pointing to a github page exposing the readme
-  - Verify the URL `https://<user>.github.io/helm_charts/index.yaml` is exposing the release's metadata
+  - Look at **Releases** section to verify it contains a release of your chart
+  - Look at **Deployments** section to verify it contains a deployment of your chart
+  - Verify the URL `https://<user>.github.io/helm_charts/` points to a github page exposing the readme
+  - Verify the URL `https://<user>.github.io/helm_charts/index.yaml` exposes the release's metadata
 
 ## III. Deployment of a chart
 ### 1. Configure and deploy a Kubernetes cluster
@@ -78,18 +78,18 @@ You can for example deploy a small cluster with **Civo**
 > See: https://github.com/veben/civo_k8s_easy_cluster/blob/main/readme.md
 
 ### 2. Install **Helm**
-> See: https://helm.sh/docs/intro/install/
+You need helm to manage the chart. You can follow [the official installation link](https://helm.sh/docs/intro/install/).
 
 ### 3. Deploy Mario Bros helm chart
 - Add the repository:
 ```sh
 helm repo add helm_charts https://veben.github.io/helm_charts/
 ```
-- Perform an helm update to fetch latest
+- Perform an helm update to fetch latest charts
 ```sh
 helm repo update
 ```
-- Search the charts contained in the repository
+- Search for the charts contained in the repository
 ```sh
 helm search repo helm_charts
 ```
